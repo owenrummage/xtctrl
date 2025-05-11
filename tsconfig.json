@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "allowJs": true,
+        "target": "ES2022",
+        "esModuleInterop": true
+    },
+    "include": ["./src/**/*", "_test.ts"],
+    "extends": "@tsconfig/node20/tsconfig.json"
+}
