@@ -39,7 +39,7 @@ export function startInputListener(instance: any) {
                 actionType = "potentiometer"
             }
 
-            const channel = message[1] % 8
+            const channel = (message[1] % 8) + 1
             const state = message[2] === 127 ? "keyDown" : "keyUp"
 
             instance.emit("channelAction", { state, action: actionType, channel });
