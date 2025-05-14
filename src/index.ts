@@ -15,6 +15,7 @@ import { startInputListener } from "./input/index.js";
 import { Controller, InputClass, OutputClass } from "./nmcontroller.js";
 const { Output, Input } = pkg;
 
+export { BUTTON_STATE_TYPE, BUTTON_TYPE, MODE_TYPE, ControlType, LineType };
 export default class XTouchControl extends EventEmitter {
     private output: OutputClass;
     private input: InputClass;
@@ -112,7 +113,7 @@ export default class XTouchControl extends EventEmitter {
 
     right() {
         return {
-            setControlButton: (button: ControlType, on: boolean) => setControlButton(this, button, on),
+            setControlButton: (button: ControlType, state: BUTTON_STATE_TYPE) => setControlButton(this, button, state),
             setTimecodeDisplay: (display: number, character: string, dot: boolean = false) => setTimecodeDisplay(this, display, character, dot)
         }
     }
