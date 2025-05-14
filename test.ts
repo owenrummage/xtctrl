@@ -1,6 +1,6 @@
-import { MidiCallback, MidiMessage } from 'midi';
-import XTouchController from './src/index';
-import { Controller, InputType, OutputType } from './src/nmcontroller';
+// import { MidiCallback, MidiMessage } from 'midi';
+import XTouchController from './src/index.js';
+// import { Controller, InputType, OutputType } from './src/nmcontroller';
 
 // class MyController implements Controller {
 //     output: OutputType = {
@@ -58,8 +58,9 @@ const controller = new XTouchController()//0, new MyController);
 
 let page = 0;
 
-controller.right().setControlButton("F2", true)
+controller.right().setControlButton("F2", "SOLID")
 controller.right().setTimecodeDisplay(10, "I")
+controller.right().setControlButton("BankLeft", "BLINK")
 
 // controller.on("message", (data) => {
 //     console.log("MIDI message received:", data); 

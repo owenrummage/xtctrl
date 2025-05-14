@@ -5,6 +5,6 @@
         "target": "ES2022",
         "esModuleInterop": true
     },
-    "include": ["./src/**/*", "_test.ts"],
+    "include": ["./src/**/*"],
     "extends": "@tsconfig/node20/tsconfig.json"
 }

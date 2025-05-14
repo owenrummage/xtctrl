@@ -1,7 +1,12 @@
 {
   "name": "xtouch-control",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "1.1.3",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "scripts": {
     "test": "tsx test.ts",
@@ -9,12 +14,14 @@
     "installer": "npm i",
     "startwi": "npm run build && npm run run",
     "build": "npx tsc",
+    "buildp": "npm run build && npm run tsup",
+    "tsup": "npx tsup",
     "run": "node dist/index.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "charmines, Owen Rummage",
+  "license": "WTFPL",
+  "description": "This module allows you to control and [Behringer X-Touch](https://www.behringer.com/product.html?modelCode=0808-AAD) with MIDI using NodeJS",
   "devDependencies": {
     "@eslint/js": "^9.7.0",
     "@tsconfig/node20": "^20.1.4",
@@ -28,11 +35,24 @@
     "eslint-plugin-prettier": "^5.2.1",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.4",
     "typescript": "^5.5.3",
-    "typescript-eslint": "^7.16.1",
-    "tsx": "^4.19.4"
+    "typescript-eslint": "^7.16.1"
   },
   "dependencies": {
-    "midi": "^2.0.0"
-  }
+    "midi": "^2.0.0",
+    "xtouch-control": "file:"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/owenrummage/xtctrl.git"
+  },
+  "bugs": {
+    "url": "https://github.com/owenrummage/xtctrl/issues"
+  },
+  "homepage": "https://github.com/owenrummage/xtctrl#readme"
 }
