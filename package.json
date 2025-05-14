@@ -1,6 +1,6 @@
 {
   "name": "xtouch-control",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -14,7 +14,8 @@
     "installer": "npm i",
     "startwi": "npm run build && npm run run",
     "build": "npx tsc",
-    "buildp": "npx tsup",
+    "buildp": "npm run build && npm run tsup",
+    "tsup": "npx tsup",
     "run": "node dist/index.js"
   },
   "keywords": [],
