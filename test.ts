@@ -1,5 +1,5 @@
 // import { MidiCallback, MidiMessage } from 'midi';
-import XTouchController from './src/index.js';
+import XTouchController from './dist/index.js';
 // import { Controller, InputType, OutputType } from './src/nmcontroller';
 
 // class MyController implements Controller {
@@ -53,23 +53,22 @@ import XTouchController from './src/index.js';
 //     };
 // }
 
-const controller = new XTouchController()//0, new MyController);
-
+const controller = new XTouchController(); //0, new MyController);
 
 let page = 0;
 
-controller.right().setControlButton("F2", "SOLID")
-controller.right().setTimecodeDisplay(10, "I")
-controller.right().setControlButton("BankLeft", "BLINK")
+controller.right().setControlButton('F2', 'SOLID');
+controller.right().setTimecodeDisplay(10, 'I');
+controller.right().setControlButton('BankLeft', 'BLINK');
 
 // controller.on("message", (data) => {
-//     console.log("MIDI message received:", data); 
+//     console.log("MIDI message received:", data);
 
 //        // Fader Bank left
 //         if(data.message[0] == 144 && data.message[1] == 46 && data.message[2] == 127){
 //             console.log(`Page down: ${page}`)
 //             page--;
-//             setPages()   
+//             setPages()
 
 //         // Fader Bank right
 //         }else if(data.message[0] == 144 && data.message[1] == 47 && data.message[2] == 127){
@@ -79,57 +78,54 @@ controller.right().setControlButton("BankLeft", "BLINK")
 //         }
 // });
 
-controller.on("keyDown", (key) => {
+controller.on('keyDown', (key) => {
     console.log(`Key down: ${key.action} - ${key.state}`);
-    if (key.action == "BankLeft") {
-        console.log(`Page down: ${page}`)
+    if (key.action == 'BankLeft') {
+        console.log(`Page down: ${page}`);
         page--;
-        setPages()
-    } else if (key.action == "BankRight") {
-        console.log(`Page up: ${page}`)
+        setPages();
+    } else if (key.action == 'BankRight') {
+        console.log(`Page up: ${page}`);
         page++;
-        setPages()
+        setPages();
     }
-})
+});
 
-controller.on("keyUp", (key) => {
+controller.on('keyUp', (key) => {
     console.log(`Key up: ${key.action} - ${key.state}`);
+});
 
-})
-
-controller.on("encoderRight", (key) => {
+controller.on('encoderRight', (key) => {
     console.log(`E Right: ${key}`);
-})
+});
 
-controller.on("encoderLeft", (key) => {
+controller.on('encoderLeft', (key) => {
     console.log(`E left: ${key}`);
+});
 
-})
-
-controller.on("encoderMove", (key) => {
+controller.on('encoderMove', (key) => {
     console.log(`E move: ${key[0]} - ${key[1]}`);
+});
 
-})
+let globalState = {};
 
-let globalState = {}
-
-controller.on("channelAction", (messsage) => {
+controller.on('channelAction', (messsage) => {
     console.log(`Channel Action: ${messsage.state} - ${messsage.action} - ${messsage.channel + 1}`);
 
-    if (messsage.action == "record" && messsage.state == "keyDown") {
+    if (messsage.action == 'record' && messsage.state == 'keyDown') {
         globalState[`${messsage.action}${messsage.channel}`] = !globalState[`${messsage.action}${messsage.channel}`];
-        controller.channel(messsage.channel + 1).setButton("REC", globalState[`${messsage.action}${messsage.channel}`] ? "BLINK" : "OFF");
+        controller.channel(messsage.channel + 1).setButton('REC', globalState[`${messsage.action}${messsage.channel}`] ? 'BLINK' : 'OFF');
     }
-})
+});
 
-controller.on("fade", (key) => {
+controller.on('fade', (key) => {
     console.log(`Fade: ${key[0]} - ${key[1]}`);
-})
+});
 
 function setPages() {
     for (let i = 1; i < 9; i++) {
-        controller.channel(i).setScreen("TOP", `${page == 0 ? "Out" : "In"}: ${i} `);
-        controller.channel(i).setScreen("BOTTOM", `${page == 0 ? "Discord" : "Spotify"} `);
+        controller.channel(i).setScreen('TOP', `${page == 0 ? 'Out' : 'In'}: ${i} `);
+        controller.channel(i).setScreen('BOTTOM', `${page == 0 ? 'Discord' : 'Spotify'} `);
     }
 }
 
@@ -140,9 +136,7 @@ function setPages() {
 //     }
 // }
 
-
 // Keep the process alive
-setInterval(() => { }, 1000);
+setInterval(() => {}, 1000);
 
-
-setPages()
+setPages();

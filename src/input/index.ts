@@ -27,7 +27,7 @@ export function startInputListener(instance: XTouchControl) {
                 action: button
             });
         } else if (message[0] == 144) {
-            let actionType = '';
+            let actionType = message[1].toString();
             if (message[1] >= 0 && message[1] <= 7) {
                 actionType = 'record';
             } else if (message[1] >= 8 && message[1] <= 15) {
@@ -38,6 +38,11 @@ export function startInputListener(instance: XTouchControl) {
                 actionType = 'select';
             } else if (message[1] >= 32 && message[1] <= 39) {
                 actionType = 'potentiometer';
+            } else if (message[1] === 102) {
+                // 103-9 is pedal 1, 102-8 is pedal 2, 1 is the rightmost, 2 is the middle
+                actionType = 'pedal2';
+            } else if (message[1] === 103) {
+                actionType = 'pedal1';
             }
 
             const channel = (message[1] % 8) + 1;
