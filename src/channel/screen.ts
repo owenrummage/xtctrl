@@ -27,7 +27,7 @@ export function setScreenChannel(instance: XTouchControl, channel: Channels, lin
     const line = Lines[lineType];
     let sChannel = channel - 1;
 
-    if (channel <= Channels.One || channel >= Channels.MAIN) {
+    if (channel < Channels.One || channel > Channels.MAIN) {
         throw new Error('Channel must be between 1 and 9.');
     }
 

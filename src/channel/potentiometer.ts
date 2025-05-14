@@ -14,7 +14,7 @@ export enum MODE {
 }
 
 export function setPotentiometerLeds(instance: XTouchControl, channel: Channels, modeType: MODE_TYPE, value: number, led: boolean) {
-    if (channel <= Channels.One || channel >= Channels.Eight) {
+    if (channel < Channels.One || channel > Channels.Eight) {
         throw new Error('Channel must be between 1 and 8. Main channel has no buttons.');
     }
 
