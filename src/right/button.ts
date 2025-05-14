@@ -1,8 +1,16 @@
 import XTouchControl from '../index.js';
 import { ControlMap, ControlType } from './buttonTypes.js';
 
-export function setControlButton(instance: XTouchControl, button: ControlType, on: boolean) {
+export type BUTTON_STATE_TYPE = 'OFF' | 'BLINK' | 'SOLID';
+
+enum BUTTON_STATE {
+    OFF = 0x00,
+    BLINK = 0x01,
+    SOLID = 0x02
+}
+
+export function setControlButton(instance: XTouchControl, button: ControlType, stateType: BUTTON_STATE_TYPE) {
     const buttonId = ControlMap[button];
-    const state = on ? 127 : 0;
+    const state = BUTTON_STATE[stateType];
     instance.sendMIDIMessage([0b10010000, buttonId, state]);
 }

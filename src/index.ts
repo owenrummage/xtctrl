@@ -139,8 +139,8 @@ export default class XTouchControl extends EventEmitter {
 
     right() {
         return {
-            setControlButton: (button: ControlType, on: boolean) => {
-                setControlButton(this, button, on);
+            setControlButton: (button: ControlType, state: BUTTON_STATE_TYPE) => {
+                setControlButton(this, button, state);
             },
             setTimecodeDisplay: (display: number, character: string, dot = false) => {
                 setTimecodeDisplay(this, display, character, dot);
