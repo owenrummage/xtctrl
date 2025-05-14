@@ -1,6 +1,6 @@
-import { MidiCallback, MidiMessage } from 'midi';
-import XTouchController from './src/index';
-import { Controller, InputType, OutputType } from './src/nmcontroller';
+// import { MidiCallback, MidiMessage } from 'midi';
+import XTouchController from './src/index.js';
+// import { Controller, InputType, OutputType } from './src/nmcontroller';
 
 // class MyController implements Controller {
 //     output: OutputType = {
