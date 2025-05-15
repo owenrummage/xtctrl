@@ -28,6 +28,7 @@ import { Controller, InputClass, OutputClass } from './nmcontroller.js';
 const { Output, Input } = pkg;
 
 export { BUTTON_STATE_TYPE, BUTTON_TYPE, MODE_TYPE, ControlType, LineType };
+export * from './nmcontroller.js';
 export default class XTouchControl extends EventEmitter {
     public output: OutputClass;
     public input: InputClass;
